@@ -1,0 +1,1 @@
+const SERVER_API_URL = 'http://120.24.218.71:1337';
