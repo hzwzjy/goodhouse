@@ -1,4 +1,13 @@
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:goodhouse/common/entities/registerData.dart';
+import 'package:goodhouse/common/utils/http.dart';
+import 'package:goodhouse/scoped_model/room_filter.dart';
+import 'package:goodhouse/utils/common_toast.dart';
+import 'package:goodhouse/utils/scoped_model_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,6 +18,44 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool showPassword = false;
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController pwdController = TextEditingController();
+
+  void onLogin(name, pwd) async {
+    if (name == '' || pwd == '') {
+      CommonToast.showToast('账号密码不能为空');
+      return;
+    }
+
+    Map<String, dynamic> response =
+        await HttpUtil().post('/login', data: {"user": name, "pwd": pwd});
+    if (response.isEmpty) {
+      CommonToast.showToast('账号或密码错误');
+      return;
+    }
+
+    RegisterData registerData = RegisterData.fromJson(response);
+    ScopedModelHelper.getModel<FilterBarModel>(context).userInfo = registerData;
+    ScopedModelHelper.getModel<FilterBarModel>(context).userId =
+        registerData.userId;
+
+    final prefs =  await SharedPreferences.getInstance();
+    prefs.setInt('userId', registerData.userId);
+    // final userId = prefs.getInt('userId');
+    // print(userId);
+
+    prefs.setString('userInfo', jsonEncode(response));
+    // final userInfo = jsonDecode(prefs.getString('userInfo')!);
+    // print(userInfo);
+
+    CommonToast.showToast('登录成功');
+    Navigator.of(context).pushReplacementNamed('/');
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 24,
               ),
               TextField(
+                controller: nameController,
                 decoration: InputDecoration(
                   labelText: "账号",
                   hintText: "请输入账号",
@@ -35,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 16,
               ),
               TextField(
+                controller: pwdController,
                 obscureText: !showPassword,
                 decoration: InputDecoration(
                   labelText: "密码",
@@ -74,7 +123,12 @@ class _LoginPageState extends State<LoginPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   child: Text("登录"),
-                  onPressed: () {},
+                  onPressed: () {
+                    onLogin(
+                      nameController.text,
+                      pwdController.text,
+                    );
+                  },
                 ),
               ),
               SizedBox(

@@ -30,6 +30,9 @@ dependencies:
   share: ^2.0.4
   # scoped_model: ^1.1.0
   scoped_model: ^2.0.0-nullsafety.0
+
+  # storage + cache
+  shared_preferences: ^2.0.15
   
 
 

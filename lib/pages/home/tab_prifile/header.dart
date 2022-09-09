@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/scoped_model/room_filter.dart';
+import 'package:goodhouse/utils/scoped_model_helper.dart';
 
 var textStyle = TextStyle(
   fontSize: 20,
@@ -81,7 +83,7 @@ class TabProfileHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '用户名',
+                    ScopedModelHelper.getModel<FilterBarModel>(context).userInfo.userName,
                     style: textStyle,
                   ),
                 ],
@@ -99,7 +101,7 @@ class TabProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isLogin = true;
+    var isLogin = ScopedModelHelper.getModel<FilterBarModel>(context).userId != 0;
     return isLogin ? _loginBuilder(context) : _notLoginBuilder(context);
   }
 }

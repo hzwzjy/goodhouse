@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:goodhouse/common/entities/registerData.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
 
 import 'package:scoped_model/scoped_model.dart';
@@ -7,6 +7,9 @@ class FilterBarModel extends Model {
   List<GeneralType> _roomTypeList = [];
   List<GeneralType> _orientedList = [];
   List<GeneralType> floorList = [];
+
+  int userId = 0;
+  late RegisterData userInfo;
 
   Set<String> _selectedList = Set<String>();
 

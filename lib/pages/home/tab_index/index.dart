@@ -24,7 +24,8 @@ class _TabIndexState extends State<TabIndex> {
   }
 
   Future getData() async {
-    List<dynamic> response = await HttpUtil().get('/Index-recommend-items');
+    List<dynamic> response =
+        await HttpUtil().get('http://120.24.218.71:1337/Index-recommend-items');
     indexRecommendData =
         response.map((item) => IndexRecommendData.fromJson(item)).toList();
     if (mounted) {
