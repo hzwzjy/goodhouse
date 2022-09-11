@@ -12,7 +12,7 @@ import 'pages/not_found.dart';
 
 class Routes {
   // 定义路由名称
-  static String home = '/';
+  static String home = '/home';
   static String login = 'login';
   static String register = '/register';
   static String setting = '/setting';

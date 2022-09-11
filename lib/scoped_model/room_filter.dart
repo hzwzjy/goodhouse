@@ -1,4 +1,6 @@
 import 'package:goodhouse/common/entities/registerData.dart';
+import 'package:goodhouse/common/utils/storage.dart';
+import 'package:goodhouse/common/values/storage.dart';
 import 'package:goodhouse/pages/home/tab_search/filter_bar/data.dart';
 
 import 'package:scoped_model/scoped_model.dart';
@@ -8,8 +10,25 @@ class FilterBarModel extends Model {
   List<GeneralType> _orientedList = [];
   List<GeneralType> floorList = [];
 
-  int userId = 0;
-  late RegisterData userInfo;
+  RegisterData userInfo =
+      RegisterData.fromJson(StorageUtil().getJSON(STORAGE_USER_PROFILE_KEY) ??
+          {
+            "user_id": 0,
+            "user_name": '',
+            "user_pwd": '',
+            "register_time": 0,
+            "user_status": 0,
+          });
+
+  clearUserInfo() {
+    userInfo = RegisterData.fromJson({
+      "user_id": 0,
+      "user_name": '',
+      "user_pwd": '',
+      "register_time": 0,
+      "user_status": 0,
+    });
+  }
 
   Set<String> _selectedList = Set<String>();
 

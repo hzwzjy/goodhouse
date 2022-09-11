@@ -1,13 +1,12 @@
 
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:goodhouse/common/entities/registerData.dart';
 import 'package:goodhouse/common/utils/http.dart';
+import 'package:goodhouse/global.dart';
 import 'package:goodhouse/scoped_model/room_filter.dart';
 import 'package:goodhouse/utils/common_toast.dart';
 import 'package:goodhouse/utils/scoped_model_helper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -37,20 +36,11 @@ class _LoginPageState extends State<LoginPage> {
 
     RegisterData registerData = RegisterData.fromJson(response);
     ScopedModelHelper.getModel<FilterBarModel>(context).userInfo = registerData;
-    ScopedModelHelper.getModel<FilterBarModel>(context).userId =
-        registerData.userId;
-
-    final prefs =  await SharedPreferences.getInstance();
-    prefs.setInt('userId', registerData.userId);
-    // final userId = prefs.getInt('userId');
-    // print(userId);
-
-    prefs.setString('userInfo', jsonEncode(response));
-    // final userInfo = jsonDecode(prefs.getString('userInfo')!);
-    // print(userInfo);
+        
+    Global.saveProfile(registerData);
 
     CommonToast.showToast('登录成功');
-    Navigator.of(context).pushReplacementNamed('/');
+    Navigator.of(context).pushReplacementNamed('/home');
     if (mounted) {
       setState(() {});
     }

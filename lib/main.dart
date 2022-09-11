@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/application.dart';
+import 'package:goodhouse/global.dart';
 
-main() => runApp(Application());
+void main() async {
+  await Global.init();
+  runApp(Application());
+}

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/common/utils/storage.dart';
+import 'package:goodhouse/common/values/storage.dart';
 import 'package:goodhouse/scoped_model/room_filter.dart';
 import 'package:goodhouse/utils/scoped_model_helper.dart';
 
@@ -83,7 +85,9 @@ class TabProfileHeader extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    ScopedModelHelper.getModel<FilterBarModel>(context).userInfo.userName,
+                    ScopedModelHelper.getModel<FilterBarModel>(context)
+                        .userInfo
+                        .userName,
                     style: textStyle,
                   ),
                 ],
@@ -101,7 +105,7 @@ class TabProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isLogin = ScopedModelHelper.getModel<FilterBarModel>(context).userId != 0;
+    var isLogin = StorageUtil().getJSON(STORAGE_USER_PROFILE_KEY) != null;
     return isLogin ? _loginBuilder(context) : _notLoginBuilder(context);
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goodhouse/common/entities/registerData.dart';
 import 'package:goodhouse/common/utils/http.dart';
 import 'package:goodhouse/utils/common_toast.dart';
 
@@ -33,12 +32,8 @@ class _RegisterPageState extends State<RegisterPage> {
       CommonToast.showToast('注册失败，请稍后再试');
       return;
     }
-    RegisterData registerData = RegisterData.fromJson(response);
     CommonToast.showToast('注册成功');
-    Navigator.of(context).pushReplacementNamed('/');
-    if (mounted) {
-      setState(() {});
-    }
+    Navigator.of(context).pushReplacementNamed('/home');
   }
 
   @override
