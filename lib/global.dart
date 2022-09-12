@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:goodhouse/common/entities/registerData.dart';
+import 'package:goodhouse/common/provider/provider.dart';
 import 'package:goodhouse/common/utils/storage.dart';
 import 'package:goodhouse/common/values/storage.dart';
 
@@ -25,6 +26,9 @@ class Global {
 
   /// 是否离线登录
   static bool isOfflineLogin = false;
+
+  /// 应用状态,
+  static AppState appState = AppState();
 
   /// init
   static Future init() async {

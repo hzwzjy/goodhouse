@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goodhouse/common/provider/provider.dart';
+import 'package:provider/provider.dart';
 
 class FunctionButtonItem {
   final String imageUrl;
@@ -20,5 +22,9 @@ final List<FunctionButtonItem> list = [
     if (isLogin) {
       Navigator.pushNamed(context, 'roomManage');
     }
+  }),
+  FunctionButtonItem('static/images/home_profile_house.png', "动态灰度", (context) {
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.switchGrayFilter();
   })
 ];
