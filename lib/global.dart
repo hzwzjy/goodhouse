@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:goodhouse/common/entities/registerData.dart';
 import 'package:goodhouse/common/provider/provider.dart';
 import 'package:goodhouse/common/utils/storage.dart';
@@ -56,6 +57,13 @@ class Global {
     if (_profileJSON != null) {
       profile = RegisterData.fromJson(_profileJSON);
       isOfflineLogin = true;
+    }
+
+    // android 状态栏为透明的沉浸
+    if (Platform.isAndroid) {
+      SystemUiOverlayStyle systemUiOverlayStyle =
+          SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     }
   }
 

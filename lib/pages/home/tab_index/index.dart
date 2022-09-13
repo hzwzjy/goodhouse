@@ -45,6 +45,7 @@ class _TabIndexState extends State<TabIndex> {
         ),
         // title: Text('fkdsj'),
         backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: ListView(
         children: [

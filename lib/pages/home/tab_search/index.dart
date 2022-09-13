@@ -26,6 +26,7 @@ class _IndexSearchState extends State<IndexSearch> {
           },
         ),
         backgroundColor: Colors.white,
+        elevation: 0,
       ),
       body: Column(
         children: [

@@ -25,6 +25,7 @@ class TabProfile extends StatelessWidget {
           // style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.teal,
+        elevation: 0,
       ),
       body: ListView(
         children: [

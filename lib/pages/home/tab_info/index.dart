@@ -24,6 +24,7 @@ class _TabInfoState extends State<TabInfo> {
           },
         ),
         backgroundColor: Colors.white,
+        elevation: 0,
       ),
       // body: ListView(
       //   children: [
