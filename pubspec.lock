@@ -282,6 +282,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.11.1"
+  pk_skeleton_null_safe:
+    dependency: "direct main"
+    description:
+      name: pk_skeleton_null_safe
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.2"
   platform:
     dependency: transitive
     description:

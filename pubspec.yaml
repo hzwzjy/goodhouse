@@ -40,6 +40,9 @@ dependencies:
 
   # 状态管理
   provider: ^6.0.3
+
+  # 骨架屏
+  pk_skeleton_null_safe: ^0.0.2
   
 
 

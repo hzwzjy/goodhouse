@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goodhouse/common/utils/http.dart';
+import 'package:goodhouse/common/widgets/widgets.dart';
 import 'package:goodhouse/pages/home/tab_info/data.dart';
 import 'package:goodhouse/pages/home/tab_info/item_widget.dart';
 import 'package:goodhouse/widget/search_bar/index.dart';
@@ -101,18 +102,20 @@ class _NewInfoState extends State<NewInfo> {
 
   @override
   Widget build(BuildContext context) {
-    return SmartRefresher(
-      enablePullDown: true,
-      enablePullUp: true,
-      controller: _refreshController,
-      onRefresh: _onRefresh,
-      onLoading: _onLoading,
-      child: ListView.builder(
-        itemBuilder: (c, i) => Center(
-            child: ItemWidget(data: InfoItem.fromJson(dataList[i]))),
-        itemExtent: 100.0,
-        itemCount: dataList.length,
-      ),
-    );
+    return dataList.isEmpty
+        ? cardListSkeleton()
+        : SmartRefresher(
+            enablePullDown: true,
+            enablePullUp: true,
+            controller: _refreshController,
+            onRefresh: _onRefresh,
+            onLoading: _onLoading,
+            child: ListView.builder(
+              itemBuilder: (c, i) => Center(
+                  child: ItemWidget(data: InfoItem.fromJson(dataList[i]))),
+              itemExtent: 100.0,
+              itemCount: dataList.length,
+            ),
+          );
   }
 }
