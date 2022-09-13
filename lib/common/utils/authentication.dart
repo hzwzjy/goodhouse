@@ -23,3 +23,8 @@ Future goHomePage(BuildContext context) async {
   await deleteAuthentication();
   Navigator.of(context).pushNamedAndRemoveUntil(Routes.home, (route) => false);
 }
+
+Future goLoginPage(BuildContext context) async {
+  await deleteAuthentication();
+  Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (route) => false);
+}
