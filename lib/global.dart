@@ -10,7 +10,7 @@ import 'package:goodhouse/common/values/storage.dart';
 /// 全局配置
 class Global {
   /// 用户配置
-  static late RegisterData profile;
+  static RegisterData? profile;
 
   /// 是否 ios
   static bool isIOS = Platform.isIOS;

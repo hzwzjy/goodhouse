@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goodhouse/common/utils/storage.dart';
-import 'package:goodhouse/common/values/storage.dart';
+import 'package:goodhouse/common/utils/utils.dart';
 import 'package:goodhouse/scoped_model/room_filter.dart';
 import 'package:goodhouse/utils/common_toast.dart';
 import 'package:goodhouse/utils/scoped_model_helper.dart';
@@ -19,9 +18,9 @@ class SettingPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               ScopedModelHelper.getModel<FilterBarModel>(context).clearUserInfo();
-              StorageUtil().remove(STORAGE_USER_PROFILE_KEY);
               CommonToast.showToast('已经退出登录');
-              Navigator.of(context).pushNamed('/home');
+              deleteAuthentication();
+              goHomePage(context);
             },
             child: Text(
               '退出登录',
