@@ -14,33 +14,39 @@ class ItemWidget extends StatelessWidget {
     return Container(
       height: 100,
       padding: EdgeInsets.all(8),
-      child: Row(
-        children: [
-          Image.network(
-            data.imageUrl,
-            height: 150,
-            width: 120,
-          ),
-          Padding(padding: EdgeInsets.only(left: 10)),
-          Expanded(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                data.title,
-                style:
-                    TextStyle(fontWeight: FontWeight.w600, color: Colors.black),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(data.source, style: textStyle),
-                  Text(data.time, style: textStyle),
-                ],
-              )
-            ],
-          ))
-        ],
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(
+              'detailsPage/${data.title}/${data.source}/${data.time}');
+        },
+        child: Row(
+          children: [
+            Image.network(
+              data.imageUrl,
+              height: 150,
+              width: 120,
+            ),
+            Padding(padding: EdgeInsets.only(left: 10)),
+            Expanded(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  data.title,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600, color: Colors.black),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(data.source, style: textStyle),
+                    Text(data.time, style: textStyle),
+                  ],
+                )
+              ],
+            ))
+          ],
+        ),
       ),
     );
   }

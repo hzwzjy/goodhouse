@@ -1,3 +1,9 @@
+# 运行项目 
+  新增非空安全插件，运行使用 flutter run --no-sound-null-safety
+# webView
+  webview_flutter: ^0.3.20+2
+# loading
+  loading_animations: ^2.1.0
 ## Flutter好客租房项目总结
 
 

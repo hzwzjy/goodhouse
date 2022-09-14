@@ -43,7 +43,12 @@ dependencies:
 
   # 骨架屏
   pk_skeleton_null_safe: ^0.0.2
-  
+
+  # webView
+  webview_flutter: ^0.3.20+2
+
+   # loading
+  loading_animations: ^2.1.0
 
 
 

@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:goodhouse/pages/home/index.dart';
+import 'package:goodhouse/pages/home/info/details_page.dart';
 import 'package:goodhouse/pages/home/room_add/index.dart';
 import 'package:goodhouse/pages/home/room_manager/index.dart';
 import 'package:goodhouse/pages/login.dart';
@@ -19,6 +20,7 @@ class Routes {
   static String roomManage = '/roomManage';
   static String roomAdd = '/roomAdd';
   static String roomDetail = '/roomDetail/:roomId';
+  static String detailsPage = '/detailsPage/:title/:source/:time';
 
   // 定义路由处理函数
 
@@ -68,6 +70,15 @@ class Routes {
     );
   });
 
+  static Handler _detailsPageHandler = Handler(
+      handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+    return DetailsPage(
+      title: params['title']![0],
+      source: params['source']![0],
+      time: params['time']![0],
+    );
+  });
+
   // 编写路由处理函数
   static void configureRoutes(FluroRouter router) {
     // router.notFoundHandler = Handler(
@@ -83,6 +94,7 @@ class Routes {
     router.define(roomManage, handler: _roomManageHanlder);
     router.define(roomAdd, handler: _roomAddHanlder);
     router.define(roomDetail, handler: _roomDetailHandler);
+    router.define(detailsPage, handler: _detailsPageHandler);
     router.notFoundHandler = _notFoundHandler;
 
     // router.define(root, handler: rootHandler);
