@@ -1,5 +1,6 @@
 # 运行项目 
   新增非空安全插件，运行使用 flutter run --no-sound-null-safety
+  打包使用 flutter build apk --no-sound-null-safety --no-tree-shake-icons
 # webView
   webview_flutter: ^0.3.20+2
 # loading
