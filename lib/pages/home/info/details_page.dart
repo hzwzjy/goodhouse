@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:goodhouse/common/values/values.dart';
 import 'package:goodhouse/common/widgets/widgets.dart';
 import 'package:loading_animations/loading_animations.dart';
+import 'package:share/share.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -50,7 +51,9 @@ class _DetailsPageState extends State<DetailsPage> {
               Icons.share,
               color: AppColors.primaryText,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Share.share('${widget.title} ${widget.source}');
+            },
           )
         ]);
   }
