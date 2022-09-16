@@ -7,11 +7,15 @@ import 'package:goodhouse/common/entities/registerData.dart';
 import 'package:goodhouse/common/provider/provider.dart';
 import 'package:goodhouse/common/utils/storage.dart';
 import 'package:goodhouse/common/values/storage.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 /// 全局配置
 class Global {
   /// 用户配置
   static RegisterData? profile;
+
+  /// 发布渠道
+  static String channel = "xiaomi";
 
   /// 是否 ios
   static bool isIOS = Platform.isIOS;
@@ -22,6 +26,9 @@ class Global {
   /// ios 设备信息
   static late IosDeviceInfo iosDeviceInfo;
 
+  /// 包信息
+  static late PackageInfo packageInfo;
+
   /// 是否第一次打开
   static bool isFirstOpen = false;
 
@@ -30,6 +37,9 @@ class Global {
 
   /// 应用状态,
   static AppState appState = AppState();
+
+  /// 是否 release
+  static bool get isRelease => bool.fromEnvironment("dart.vm.product");
 
   /// init
   static Future init() async {
@@ -42,6 +52,9 @@ class Global {
     } else {
       Global.androidDeviceInfo = await deviceInfoPlugin.androidInfo;
     }
+
+    // 包信息
+    Global.packageInfo = await PackageInfo.fromPlatform();
 
     // 工具初始
     await StorageUtil.init();

@@ -1,8 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:goodhouse/global.dart';
-import 'package:goodhouse/pages/home/index.dart';
-import 'package:goodhouse/pages/welcome/welcome.dart';
+import 'package:goodhouse/app_update.dart';
 import 'package:goodhouse/routes.dart';
 import 'package:goodhouse/scoped_model/room_filter.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -20,7 +18,7 @@ class Application extends StatelessWidget {
         theme: ThemeData(primarySwatch: Colors.teal),
         onGenerateRoute: router.generator,
         debugShowCheckedModeBanner: false,
-        home: Global.isFirstOpen ? WelcomePage() : HomePage(),
+        home: AppUpdate(),
       ),
     );
   }

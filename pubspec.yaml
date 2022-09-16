@@ -36,8 +36,6 @@ dependencies:
 
   pull_to_refresh_flutter3: ^2.0.1
 
-  device_info_plus: ^4.1.2
-
   # 状态管理
   provider: ^6.0.3
 
@@ -49,6 +47,24 @@ dependencies:
 
    # loading
   loading_animations: ^2.1.0
+
+  # 设备信息
+  device_info_plus: ^4.1.2
+
+  # 包信息
+  package_info_plus: ^1.4.3+1
+
+  # 路径查询
+  path_provider: ^2.0.11
+
+  # permission 权限
+  permission_handler: ^6.0.0
+
+  # 安装
+  r_upgrade: ^0.3.8+2
+
+  # 对话框
+  easy_dialog: ^1.0.5
 
 
 
