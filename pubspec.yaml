@@ -43,10 +43,10 @@ dependencies:
   pk_skeleton_null_safe: ^0.0.2
 
   # webView
-  webview_flutter: ^0.3.20+2
+  webview_flutter: ^2.0.0
 
    # loading
-  loading_animations: ^2.1.0
+  loading_animations: ^2.2.0
 
   # 设备信息
   device_info_plus: ^4.1.2
