@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   fluro: ^2.0.3
-  flutter_swiper_null_safety: ^1.0.2
+  flutter_swiper_2:
+    git: "https://github.com/hzwzjy/flutter_swiper_2.git"
   fluttertoast: ^8.0.7
   image_picker: ^0.8.2
   share: ^2.0.4
@@ -43,9 +44,10 @@ dependencies:
   pk_skeleton_null_safe: ^0.0.2
 
   # webView
-  webview_flutter: ^2.0.0
+  webview_flutter:
+    ^2.0.0
 
-   # loading
+    # loading
   loading_animations: ^2.2.0
 
   # 设备信息
@@ -68,8 +70,6 @@ dependencies:
 
   # 错误收集
   sentry: ^6.9.1
-
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -94,7 +94,6 @@ flutter_icons:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -129,7 +128,7 @@ flutter:
     - family: CommonIcon
       fonts:
         - asset: static/fonts/iconfont.ttf
-        
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
